@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="view_bank_statement_line_form" model="ir.ui.view">
+            <field name="name">bank.statement.line.form.hobbii</field>
+            <field name="model">account.bank.statement.line</field>
+            <field name="inherit_id" ref="account.view_bank_statement_line_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                        <field name="provider_transaction_id" readonly="1" />
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

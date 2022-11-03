@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="action_payment_provider_transaction_form" model="ir.ui.view">
+            <field name="name">payment.provider.transaction.form</field>
+            <field name="model">payment.provider.transaction</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="transaction_id" readonly="1" />
+                                <field name="settlement_id" readonly="1" />
+                                <field name="payment_provider_id" readonly="1" />
+                                <field name="transaction_date" readonly="1" />
+                                <field
+                                    name="company_id"
+                                    readonly="1"
+                                    groups="base.group_multi_company"
+                                />
+                            </group>
+                            <group>
+                                <field name="ignore" readonly="1" />
+                                <field name="processed" readonly="1" />
+                                <field name="reconciled" readonly="1" />
+                                <field name="message" readonly="1" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Bank Statement Lines">
+                                <group>
+                                    <field
+                                        name="bank_statement_line_ids"
+                                        readonly="1"
+                                        nolabel="1"
+                                    />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_payment_provider_transaction_tree" model="ir.ui.view">
+            <field name="name">payment.provider.transaction.tree</field>
+            <field name="model">payment.provider.transaction</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="transaction_id" />
+                    <field name="transaction_date" />
+                    <field name="payment_provider_id" />
+                    <field name="ignore" />
+                    <field name="processed" />
+                    <field name="company_id" groups="base.group_multi_company" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_payment_provider_form" model="ir.ui.view">
+            <field name="name">payment.provider.form</field>
+            <field name="model">payment.provider</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button
+                                name="toggle_active"
+                                type="object"
+                                groups="account.group_account_manager"
+                                class="oe_stat_button"
+                                icon="fa-archive"
+                            >
+                                <field
+                                    name="active"
+                                    widget="boolean_button"
+                                    options='{"terminology": "archive"}'
+                                />
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="payment_type" />
+                            </group>
+                            <group>
+                                <field name="multi_currency" />
+                                <field
+                                    name="company_id"
+                                    groups="base.group_multi_company"
+                                />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Accounts">
+                                <group>
+                                    <group>
+                                        <field name="adjustment_account" />
+                                        <field name="inter_bank_account" />
+                                        <field name="receiveable_account" />
+                                    </group>
+                                    <group>
+                                        <field name="debtor_loss_account" />
+                                        <field name="psp_fee_account" />
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Journals">
+                                <group>
+                                    <group>
+                                        <field name="transaction_journal" />
+                                    </group>
+                                    <group>
+                                        <field name="settlement_journal" />
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_payment_provider_tree" model="ir.ui.view">
+            <field name="name">payment.provider.tree</field>
+            <field name="model">payment.provider</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="payment_type" />
+                    <field name="company_id" groups="base.group_multi_company" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_payment_provider_settlement_form" model="ir.ui.view">
+            <field name="name">payment.provider.settlement.form</field>
+            <field name="model">payment.provider.settlement</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                              <button
+                                name="action_view_transactions"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-building-o"
+                            >
+                                  <field
+                                    name="transaction_count"
+                                    widget="statinfo"
+                                    help="Transactions associated"
+                                    modifiers="{'readonly': true}"
+                                    string="Transactions"
+                                />
+                              </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="settlement_id" readonly="1" />
+                                <field name="payment_provider_id" readonly="1" />
+                                <field name="settlement_date" readonly="1" />
+                                <field
+                                    name="company_id"
+                                    readonly="1"
+                                    groups="base.group_multi_company"
+                                />
+                            </group>
+                            <group>
+                                <field name="processed" readonly="1" />
+                                <field name="message" readonly="1" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_payment_provider_settlement_tree" model="ir.ui.view">
+            <field name="name">payment.provider.settlement.tree</field>
+            <field name="model">payment.provider.settlement</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="settlement_id" />
+                    <field name="settlement_date" />
+                    <field name="payment_provider_id" />
+                    <field name="processed" />
+                    <field name="company_id" groups="base.group_multi_company" />
+                </tree>
+            </field>
+        </record>
+
+        <record
+            model="ir.actions.act_window"
+            id="payment_provider_transaction_action_window"
+        >
+            <field name="name">Payment Provider Transaction</field>
+            <field name="res_model">payment.provider.transaction</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="payment_provider_action_window">
+            <field name="name">Payment Provider</field>
+            <field name="res_model">payment.provider</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record
+            model="ir.actions.act_window"
+            id="payment_provider_settlement_action_window"
+        >
+            <field name="name">Payment Provider Settlement</field>
+            <field name="res_model">payment.provider.settlement</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="menu_payment_providers"
+            name="Payment Providers"
+            parent="account.menu_finance_configuration"
+            sequence="50"
+            groups="account.group_account_manager"
+        />
+            <!-- Payment Providers sub-menus -->
+            <menuitem
+            name="Payment Provider Transaction"
+            id="submenu_payment_provider_transaction"
+            parent="payment_provider_extractor.menu_payment_providers"
+            action="payment_provider_transaction_action_window"
+            sequence="2"
+        />
+
+            <menuitem
+            name="Payment Provider"
+            id="submenu_payment_provider"
+            parent="payment_provider_extractor.menu_payment_providers"
+            action="payment_provider_action_window"
+            sequence="1"
+        />
+
+            <menuitem
+            name="Payment Provider Settlement"
+            id="submenu_payment_provider_settlement"
+            parent="payment_provider_extractor.menu_payment_providers"
+            action="payment_provider_settlement_action_window"
+            sequence="3"
+        />
+
+    </data>
+</odoo>
