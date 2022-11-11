@@ -12,7 +12,7 @@ from odoo import fields, models
 class MollieProvider(models.Model):
     _inherit = "payment.provider"
 
-    payment_type = fields.Selection(selection_add=[("mollie", "Mollie")])
+    payment_type = fields.Selection(selection_add=[("mollie", "Mollie")], ondelete={"mollie": "cascade"},)
 
     mollie_endpoint_url = "https://api.mollie.com/v2/"
 

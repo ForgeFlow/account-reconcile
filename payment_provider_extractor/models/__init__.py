@@ -3,7 +3,6 @@ from . import payment_provider_settlement
 from . import payment_provider_transaction
 from . import clearhaus_provider
 from . import mollie_provider
-from . import klarna_provider
 from . import klarna_v3_provider
 from . import paypal_provider
 from . import account_bank_statement

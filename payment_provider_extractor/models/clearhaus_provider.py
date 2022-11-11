@@ -16,7 +16,7 @@ _logger = logging.getLogger(__name__)
 class ClearhausProvider(models.Model):
     _inherit = "payment.provider"
 
-    payment_type = fields.Selection(selection_add=[("clearhaus", "Clearhaus")])
+    payment_type = fields.Selection(selection_add=[("clearhaus", "Clearhaus")], ondelete={"clearhaus": "cascade"},)
 
     clearhaus_endpoint_url = "https://merchant.clearhaus.com/"
 

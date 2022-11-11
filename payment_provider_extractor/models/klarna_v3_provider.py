@@ -15,7 +15,7 @@ _logger = logging.getLogger(__name__)
 class KlarnaProvider(models.Model):
     _inherit = "payment.provider"
 
-    payment_type = fields.Selection(selection_add=[("klarna_v3", "Klarna v3")])
+    payment_type = fields.Selection(selection_add=[("klarna_v3", "Klarna v3")], ondelete={"klarna_v3": "cascade"},)
 
     mode = (
         "live"

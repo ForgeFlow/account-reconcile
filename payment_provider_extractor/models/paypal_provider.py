@@ -18,7 +18,7 @@ class PaypalProvider(models.Model):
 
     access_token = None
 
-    payment_type = fields.Selection(selection_add=[("paypal", "Paypal")])
+    payment_type = fields.Selection(selection_add=[("paypal", "Paypal")], ondelete={"paypal": "cascade"},)
 
     paypal_endpoint_url = "https://api.paypal.com/v1/reporting"
 
