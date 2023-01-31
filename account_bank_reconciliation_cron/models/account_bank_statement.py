@@ -30,7 +30,7 @@ class AccountBankStatement(models.Model):
                             'ref': amls.name,
                         })
                     else:
-                        if sum(abs(amls.residual_amount)) == abs(stl.amount):
+                        if sum(abs(amls.amount_residual)) == abs(stl.amount):
                             for aml in amls:
                                 counterpart_aml_dicts.append({
                                     'move_line': aml,
