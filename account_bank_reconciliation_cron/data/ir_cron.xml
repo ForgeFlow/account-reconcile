@@ -1,0 +1,11 @@
+<odoo noupdate="0">
+        <record id="ir_cron_automatic_reconciliation" model="ir.cron">
+            <field name="name">Automatically reconciliation for bank statement lines</field>
+            <field name="model_id" ref="model_account_bank_statement"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_bank_automatic_reconciliation()</field>
+            <field name="interval_type">days</field>
+            <field name="interval_number">1</field>
+            <field name="numbercall">-1</field>
+        </record>
+</odoo>
